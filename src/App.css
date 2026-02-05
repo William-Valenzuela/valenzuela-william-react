@@ -35,8 +35,16 @@ body {
 
 /* TEXTO ALUMNO */
 .text {
-  font-size: 18px;
-  margin-bottom: 12px;
+  font-size: 22px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* TEXTO EVALUACIÓN */
+.evaluation-text {
+  font-size: 16px;
+  color: #38bdf8;
+  margin-bottom: 30px;
 }
 
 /* LINKEDIN */
@@ -65,23 +73,145 @@ body {
   background-color: #1d4ed8;
 }
 
-/* CONTENEDOR PDFs */
+/* CONTENEDOR PDFs FULLSCREEN */
+.pdf-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.pdf-modal {
+  background-color: white;
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.3s;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+.pdf-title {
+  color: #2563eb;
+  font-size: 28px;
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+.pdf-subtitle {
+  color: #555;
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
 .pdf-buttons {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
+/* BOTONES AZULES */
+.pdf-btn-blue {
+  padding: 16px;
+  background-color: #2563eb;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 8px;
+  display: block;
+  transition: background-color 0.3s, transform 0.2s;
+  font-weight: 600;
+}
+
+.pdf-btn-blue:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* BOTÓN VERDE */
+.pdf-btn-green {
+  padding: 16px;
+  background-color: #10b981;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 8px;
+  display: block;
+  transition: background-color 0.3s, transform 0.2s;
+  font-weight: 600;
+}
+
+.pdf-btn-green:hover {
+  background-color: #059669;
+  transform: translateY(-2px);
+}
+
 /* BOTONES NEGROS */
-.pdf-buttons a {
-  padding: 14px;
+.pdf-btn-black {
+  padding: 16px;
   background-color: #1f2933;
   color: white;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 16px;
   border-radius: 8px;
+  display: block;
+  transition: background-color 0.3s, transform 0.2s;
+  font-weight: 600;
 }
 
-.pdf-buttons a:hover {
+.pdf-btn-black:hover {
   background-color: #374151;
+  transform: translateY(-2px);
 }
