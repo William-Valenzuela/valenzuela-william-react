@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/valenzuela-william-react/static/css/main.f855e6bc.css",
-    "main.js": "/valenzuela-william-react/static/js/main.78f06c23.js",
+    "main.css": "/valenzuela-william-react/static/css/main.441c9679.css",
+    "main.js": "/valenzuela-william-react/static/js/main.fbf70748.js",
     "static/js/453.e7fe82e9.chunk.js": "/valenzuela-william-react/static/js/453.e7fe82e9.chunk.js",
+    "static/media/profile.jpg": "/valenzuela-william-react/static/media/profile.858660e74faf9580f93d.jpg",
     "index.html": "/valenzuela-william-react/index.html",
-    "main.f855e6bc.css.map": "/valenzuela-william-react/static/css/main.f855e6bc.css.map",
-    "main.78f06c23.js.map": "/valenzuela-william-react/static/js/main.78f06c23.js.map",
+    "main.441c9679.css.map": "/valenzuela-william-react/static/css/main.441c9679.css.map",
+    "main.fbf70748.js.map": "/valenzuela-william-react/static/js/main.fbf70748.js.map",
     "453.e7fe82e9.chunk.js.map": "/valenzuela-william-react/static/js/453.e7fe82e9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.78f06c23.js"
+    "static/css/main.441c9679.css",
+    "static/js/main.fbf70748.js"
   ]
 }
