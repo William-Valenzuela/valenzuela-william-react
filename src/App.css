@@ -173,6 +173,8 @@ body {
   display: block;
   transition: background-color 0.3s, transform 0.2s;
   font-weight: 600;
+  border: none;
+  cursor: pointer;
 }
 
 .pdf-btn-blue:hover {
@@ -191,6 +193,8 @@ body {
   display: block;
   transition: background-color 0.3s, transform 0.2s;
   font-weight: 600;
+  border: none;
+  cursor: pointer;
 }
 
 .pdf-btn-green:hover {
@@ -209,6 +213,8 @@ body {
   display: block;
   transition: background-color 0.3s, transform 0.2s;
   font-weight: 600;
+  border: none;
+  cursor: pointer;
 }
 
 .pdf-btn-black:hover {
