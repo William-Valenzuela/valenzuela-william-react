@@ -6,7 +6,10 @@ function App() {
   const [showDocs, setShowDocs] = useState(false);
 
   const handleDownload = (filePath, fileName) => {
-    fetch(filePath)
+    const basePath = process.env.PUBLIC_URL || '';
+    const fullPath = basePath + filePath;
+    
+    fetch(fullPath)
       .then(response => response.blob())
       .then(blob => {
         const url = window.URL.createObjectURL(blob);
