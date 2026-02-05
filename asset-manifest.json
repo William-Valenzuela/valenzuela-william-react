@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/valenzuela-william-react/static/css/main.04c361db.css",
-    "main.js": "/valenzuela-william-react/static/js/main.cb69a1bd.js",
+    "main.js": "/valenzuela-william-react/static/js/main.b86744ce.js",
     "static/js/453.e7fe82e9.chunk.js": "/valenzuela-william-react/static/js/453.e7fe82e9.chunk.js",
     "static/media/profile.jpg": "/valenzuela-william-react/static/media/profile.858660e74faf9580f93d.jpg",
     "index.html": "/valenzuela-william-react/index.html",
     "main.04c361db.css.map": "/valenzuela-william-react/static/css/main.04c361db.css.map",
-    "main.cb69a1bd.js.map": "/valenzuela-william-react/static/js/main.cb69a1bd.js.map",
+    "main.b86744ce.js.map": "/valenzuela-william-react/static/js/main.b86744ce.js.map",
     "453.e7fe82e9.chunk.js.map": "/valenzuela-william-react/static/js/453.e7fe82e9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.04c361db.css",
-    "static/js/main.cb69a1bd.js"
+    "static/js/main.b86744ce.js"
   ]
 }
