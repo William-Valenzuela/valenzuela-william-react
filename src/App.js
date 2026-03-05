@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import profile from './profile.jpg';
 import './App.css';
+import DocumentacionParcial2 from './DocumentacionParcial2';
 
-function App() {
+function AppHome({ onNavigate }) {
   const [showDocs, setShowDocs] = useState(false);
 
   const handleDownload = (filePath, fileName) => {
@@ -55,6 +56,15 @@ function App() {
           DOCUMENTACIÓN PARCIAL 1
         </button>
 
+        {/* Botón para ir a Documentación Parcial 2 */}
+        <button
+          className="main-btn"
+          onClick={() => onNavigate('partial2')}
+          style={{ marginTop: '15px', backgroundColor: '#ff6b6b' }}
+        >
+          DOCUMENTACIÓN PARCIAL 2
+        </button>
+
         {/* PDFs OCULTOS */}
         {showDocs && (
           <div className="pdf-overlay">
@@ -74,6 +84,21 @@ function App() {
 
       </div>
     </div>
+  );
+}
+
+function App() {
+  const [currentPage, setCurrentPage] = useState('home');
+
+  const handleNavigate = (page) => {
+    setCurrentPage(page);
+  };
+
+  return (
+    <>
+      {currentPage === 'home' && <AppHome onNavigate={handleNavigate} />}
+      {currentPage === 'partial2' && <DocumentacionParcial2 onBackToHome={() => handleNavigate('home')} />}
+    </>
   );
 }
 

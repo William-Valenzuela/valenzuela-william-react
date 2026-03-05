@@ -1,0 +1,32 @@
+<svg width="400" height="250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="400" height="250" fill="url(#grad4)"/>
+  
+  <!-- Título -->
+  <text x="200" y="40" font-size="28" font-weight="bold" text-anchor="middle" fill="white">
+    SCRUM
+  </text>
+  
+  <!-- Sprint -->
+  <rect x="50" y="70" width="300" height="120" fill="none" stroke="white" stroke-width="2" stroke-dasharray="5,5" rx="5"/>
+  <text x="65" y="90" font-size="14" font-weight="bold" fill="white">Sprint (2-4 semanas)</text>
+  
+  <!-- Componentes SCRUM -->
+  <rect x="60" y="100" width="80" height="30" fill="white" stroke="#333" stroke-width="1" rx="3"/>
+  <text x="100" y="120" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Backlog</text>
+  
+  <rect x="160" y="100" width="80" height="30" fill="white" stroke="#333" stroke-width="1" rx="3"/>
+  <text x="200" y="120" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Planning</text>
+  
+  <rect x="260" y="100" width="80" height="30" fill="white" stroke="#333" stroke-width="1" rx="3"/>
+  <text x="300" y="120" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Daily</text>
+  
+  <rect x="60" y="150" width="280" height="30" fill="white" stroke="#333" stroke-width="1" rx="3"/>
+  <text x="200" y="170" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Review & Retrospective</text>
+</svg>
