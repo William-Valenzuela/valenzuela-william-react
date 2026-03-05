@@ -112,7 +112,7 @@ const DocumentacionParcial2 = ({ onBackToHome }) => {
       {/* Botón de JIRA */}
       <section className="jira-section">
         <a
-          href="https://ingreyeslara.atlassian.net/jira/software/projects/KAN/boards/1"
+          href="https://williamdelacruz696.atlassian.net/jira/software/projects/SCRUM/boards/1?sprintStarted=true"
           target="_blank"
           rel="noopener noreferrer"
           className="jira-button"
