@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import profile from './profile.jpg';
 import './App.css';
 import DocumentacionParcial2 from './DocumentacionParcial2';
 
-function AppHome({ onNavigate }) {
+// COMPONENTE DEL PORTAFOLIO (Tu código original)
+function AppHome({ onNavigate, setIsLoggedIn }) {
   const [showDocs, setShowDocs] = useState(false);
 
   const handleDownload = (filePath, fileName) => {
@@ -28,76 +29,91 @@ function AppHome({ onNavigate }) {
   return (
     <div className="App">
       <div className="container">
+        {/* Botón para Salir */}
+        <button 
+          onClick={() => setIsLoggedIn(false)} 
+          style={{ position: 'absolute', top: '20px', right: '20px', padding: '10px', cursor: 'pointer', borderRadius: '5px', border: 'none', backgroundColor: '#ff4b2b', color: 'white' }}
+        >
+          Cerrar Sesión
+        </button>
 
         <img src={profile} alt="Perfil" className="profile" />
+        <p className="text">Alumno William Valenzuela de la Cruz</p>
+        <p className="evaluation-text">Evaluacion Parcial 1</p>
 
-        <p className="text">
-          Alumno William Valenzuela de la Cruz
-        </p>
-
-        <p className="evaluation-text">
-          Evaluacion Parcial 1
-        </p>
-
-        <a
-          href="https://www.linkedin.com/in/william-valenzuela-de-la-cruz-58b2433a4"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="link"
-        >
+        <a href="https://www.linkedin.com/in/william-valenzuela-de-la-cruz-58b2433a4" target="_blank" rel="noopener noreferrer" className="link">
           LINKEDIN DE MI PERFIL
         </a>
 
-        {/* BOTÓN PRINCIPAL */}
-        <button
-          className="main-btn"
-          onClick={() => setShowDocs(!showDocs)}
-        >
+        <button className="main-btn" onClick={() => setShowDocs(!showDocs)}>
           DOCUMENTACIÓN PARCIAL 1
         </button>
 
-        {/* Botón para ir a Documentación Parcial 2 */}
-        <button
-          className="main-btn"
-          onClick={() => onNavigate('partial2')}
-          style={{ marginTop: '15px', backgroundColor: '#ff6b6b' }}
-        >
+        <button className="main-btn" onClick={() => onNavigate('partial2')} style={{ marginTop: '15px', backgroundColor: '#ff6b6b' }}>
           DOCUMENTACIÓN PARCIAL 2
         </button>
 
-        {/* PDFs OCULTOS */}
         {showDocs && (
           <div className="pdf-overlay">
             <div className="pdf-modal">
               <button className="close-btn" onClick={() => setShowDocs(false)}>✕</button>
               <h2 className="pdf-title">Centro de Descargas</h2>
-              <p className="pdf-subtitle">Click en los botones para obtener tus archivos PDF</p>
               <div className="pdf-buttons">
-                <button onClick={() => handleDownload('/pdfs/comandos.pdf', 'comandos.pdf')} className="pdf-btn-blue">COMANDOS BÁSICOS DE REACT</button>
-                <button onClick={() => handleDownload('/pdfs/ieee.pdf', 'ieee.pdf')} className="pdf-btn-blue">ISO / ESTÁNDAR IEEE</button>
-                <button onClick={() => handleDownload('/pdfs/requerimientos.pdf', 'requerimientos.pdf')} className="pdf-btn-green">REQUERIMIENTOS FUNCIONALES Y NO FUNCIONALES</button>
-                <button onClick={() => handleDownload('/pdfs/sha_256.pdf', 'sha_256.pdf')} className="pdf-btn-black">CÓDIGO PYTHON ALGORITMO SHA-256</button>
+                <button onClick={() => handleDownload('/pdfs/comandos.pdf', 'comandos.pdf')} className="pdf-btn-blue">COMANDOS BÁSICOS</button>
+                <button onClick={() => handleDownload('/pdfs/ieee.pdf', 'ieee.pdf')} className="pdf-btn-blue">ESTÁNDAR IEEE</button>
+                <button onClick={() => handleDownload('/pdfs/requerimientos.pdf', 'requerimientos.pdf')} className="pdf-btn-green">REQUERIMIENTOS</button>
+                <button onClick={() => handleDownload('/pdfs/sha_256.pdf', 'sha_256.pdf')} className="pdf-btn-black">SHA-256 PYTHON</button>
               </div>
             </div>
           </div>
         )}
-
       </div>
     </div>
   );
 }
 
+// COMPONENTE PRINCIPAL CON LOGIN
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleNavigate = (page) => {
-    setCurrentPage(page);
+  const handleCallbackResponse = (response) => {
+    console.log("Logueado con éxito");
+    setIsLoggedIn(true);
   };
+
+  useEffect(() => {
+    /* global google */
+    if (!isLoggedIn && window.google) {
+      google.accounts.id.initialize({
+        client_id: "147107726030-6ss1s5ub8355k24b35nnk9dt2s0ivsug.apps.googleusercontent.com",
+        callback: handleCallbackResponse
+      });
+
+      google.accounts.id.renderButton(
+        document.getElementById("signInDiv"),
+        { theme: "outline", size: "large", text: "signin_with" }
+      );
+    }
+  }, [isLoggedIn]);
+
+  if (!isLoggedIn) {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh', backgroundColor: '#282c34', color: 'white' }}>
+        <h1 style={{ borderBottom: '2px solid #61dafb', paddingBottom: '10px' }}>Acceso al Portafolio</h1>
+        <div style={{ background: '#444', padding: '20px', borderRadius: '10px', margin: '20px 0', textAlign: 'center' }}>
+          <p><strong>"Estoy programando el login con Google"</strong></p>
+        </div>
+        {/* AQUÍ ES DONDE GOOGLE PINTA EL BOTÓN */}
+        <div id="signInDiv"></div>
+      </div>
+    );
+  }
 
   return (
     <>
-      {currentPage === 'home' && <AppHome onNavigate={handleNavigate} />}
-      {currentPage === 'partial2' && <DocumentacionParcial2 onBackToHome={() => handleNavigate('home')} />}
+      {currentPage === 'home' && <AppHome onNavigate={(p) => setCurrentPage(p)} setIsLoggedIn={setIsLoggedIn} />}
+      {currentPage === 'partial2' && <DocumentacionParcial2 onBackToHome={() => setCurrentPage('home')} />}
     </>
   );
 }
