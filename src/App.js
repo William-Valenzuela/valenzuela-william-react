@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import profile from './profile.jpg';
 import './App.css';
 import DocumentacionParcial2 from './DocumentacionParcial2';
+import DocumentacionParcial3 from './DocumentacionParcial3';
 
 // COMPONENTE DEL PORTAFOLIO (Tu código original)
 function AppHome({ onNavigate, setIsLoggedIn }) {
@@ -51,6 +52,10 @@ function AppHome({ onNavigate, setIsLoggedIn }) {
 
         <button className="main-btn" onClick={() => onNavigate('partial2')} style={{ marginTop: '15px', backgroundColor: '#ff6b6b' }}>
           DOCUMENTACIÓN PARCIAL 2
+        </button>
+
+        <button className="main-btn" onClick={() => onNavigate('partial3')} style={{ marginTop: '15px', backgroundColor: '#4ecdc4' }}>
+          DOCUMENTACIÓN PARCIAL 3
         </button>
 
         {showDocs && (
@@ -114,6 +119,7 @@ function App() {
     <>
       {currentPage === 'home' && <AppHome onNavigate={(p) => setCurrentPage(p)} setIsLoggedIn={setIsLoggedIn} />}
       {currentPage === 'partial2' && <DocumentacionParcial2 onBackToHome={() => setCurrentPage('home')} />}
+      {currentPage === 'partial3' && <DocumentacionParcial3 onBackToHome={() => setCurrentPage('home')} />}
     </>
   );
 }
