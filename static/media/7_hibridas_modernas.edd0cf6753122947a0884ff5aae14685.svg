@@ -1,0 +1,30 @@
+<svg width="400" height="250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="400" height="250" fill="url(#grad7)"/>
+  
+  <!-- Título -->
+  <text x="200" y="40" font-size="28" font-weight="bold" text-anchor="middle" fill="white">
+    Híbridas y Modernas
+  </text>
+  
+  <!-- Combinación de elementos -->
+  <rect x="50" y="75" width="140" height="100" fill="rgba(255,255,255,0.3)" stroke="white" stroke-width="2" rx="5"/>
+  <text x="120" y="95" font-size="12" font-weight="bold" text-anchor="middle" fill="white">Método</text>
+  <text x="120" y="110" font-size="11" text-anchor="middle" fill="white">Cascada</text>
+  <text x="120" y="155" font-size="11" text-anchor="middle" fill="white">+</text>
+  
+  <rect x="210" y="75" width="140" height="100" fill="rgba(255,255,255,0.3)" stroke="white" stroke-width="2" rx="5"/>
+  <text x="280" y="95" font-size="12" font-weight="bold" text-anchor="middle" fill="white">Metodología</text>
+  <text x="280" y="110" font-size="11" text-anchor="middle" fill="white">Ágil</text>
+  
+  <!-- Resultado -->
+  <text x="200" y="210" font-size="14" font-weight="bold" text-anchor="middle" fill="white">
+    SAFe, DevOps, Lean
+  </text>
+</svg>
