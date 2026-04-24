@@ -1,0 +1,33 @@
+<svg width="400" height="250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="400" height="250" fill="url(#grad1)"/>
+  
+  <!-- Título -->
+  <text x="200" y="40" font-size="28" font-weight="bold" text-anchor="middle" fill="white">
+    Modelo Cascada
+  </text>
+  
+  <!-- Fases -->
+  <rect x="50" y="70" width="300" height="30" fill="white" stroke="#333" stroke-width="2" rx="5"/>
+  <text x="200" y="92" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Requisitos</text>
+  
+  <g stroke="#333" stroke-width="2" fill="none">
+    <line x1="200" y1="100" x2="200" y2="120"/>
+  </g>
+  
+  <rect x="50" y="120" width="300" height="30" fill="white" stroke="#333" stroke-width="2" rx="5"/>
+  <text x="200" y="142" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Diseño</text>
+  
+  <g stroke="#333" stroke-width="2" fill="none">
+    <line x1="200" y1="150" x2="200" y2="170"/>
+  </g>
+  
+  <rect x="50" y="170" width="300" height="30" fill="white" stroke="#333" stroke-width="2" rx="5"/>
+  <text x="200" y="192" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Implementación</text>
+</svg>
