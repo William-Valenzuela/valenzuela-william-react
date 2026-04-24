@@ -7,7 +7,7 @@ import DocumentacionParcial3 from './DocumentacionParcial3';
 
 const CLIENT_ID = "147107726030-6ss1s5ub8355k24b35nnk9dt2s0ivsug.apps.googleusercontent.com";
 
-function AppHome({ onNavigate, setIsLoggedIn }) {
+function AppHome({ onNavigate }) {
   const [showDocs, setShowDocs] = useState(false);
 
   const handleDownload = (filePath, fileName) => {
@@ -28,10 +28,6 @@ function AppHome({ onNavigate, setIsLoggedIn }) {
   return (
     <div className="App">
       <div className="container">
-        <button onClick={() => setIsLoggedIn(false)}
-          style={{ position:'absolute', top:'20px', right:'20px', padding:'10px', cursor:'pointer', borderRadius:'5px', border:'none', backgroundColor:'#ff4b2b', color:'white' }}>
-          Cerrar Sesión
-        </button>
         <img src={profile} alt="Perfil" className="profile" />
         <p className="text">Alumno William Valenzuela de la Cruz</p>
         <p className="evaluation-text">Evaluacion Parcial 3</p>
@@ -41,6 +37,16 @@ function AppHome({ onNavigate, setIsLoggedIn }) {
         <button className="main-btn" onClick={() => setShowDocs(!showDocs)}>DOCUMENTACIÓN PARCIAL 1</button>
         <button className="main-btn" onClick={() => onNavigate('partial2')} style={{ marginTop:'15px', backgroundColor:'#ff6b6b' }}>DOCUMENTACIÓN PARCIAL 2</button>
         <button className="main-btn" onClick={() => onNavigate('partial3')} style={{ marginTop:'15px', backgroundColor:'#4ecdc4' }}>DOCUMENTACIÓN PARCIAL 3 — ERS</button>
+
+        {/* GOOGLE LOGIN COMPONENT */}
+        <div style={{ marginTop: '30px', textAlign: 'center' }}>
+          <h3 style={{ color: '#61dafb', marginBottom: '15px' }}>Acceso con Google</h3>
+          <GoogleLogin
+            onSuccess={(response) => console.log("Login exitoso:", response)}
+            onError={() => console.log("Error en login")}
+            useOneTap
+          />
+        </div>
 
         {showDocs && (
           <div className="pdf-overlay">
@@ -63,35 +69,13 @@ function AppHome({ onNavigate, setIsLoggedIn }) {
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const onSuccess = (response) => {
-    console.log("Login con Google exitoso:", response);
-    setIsLoggedIn(true);
-  };
-
-  const onError = () => console.log("Error al iniciar sesión con Google");
 
   return (
     <GoogleOAuthProvider clientId={CLIENT_ID}>
       <div>
-        {!isLoggedIn ? (
-          <div style={{ display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', height:'100vh', backgroundColor:'#282c34', color:'white' }}>
-            <img src={profile} alt="Perfil" style={{ width:'120px', borderRadius:'50%', marginBottom:'20px', border:'3px solid #61dafb' }} />
-            <h1 style={{ borderBottom:'2px solid #61dafb', paddingBottom:'10px' }}>Acceso al Portafolio</h1>
-            <p style={{ color:'#aaa', marginBottom:'10px' }}>Alumno: William Valenzuela de la Cruz</p>
-            <div style={{ background:'#444', padding:'24px 32px', borderRadius:'12px', margin:'20px 0', textAlign:'center' }}>
-              <p style={{ marginBottom:'16px', color:'#ccc' }}>Inicia sesión con tu cuenta de Google</p>
-              <GoogleLogin onSuccess={onSuccess} onError={onError} useOneTap />
-            </div>
-          </div>
-        ) : (
-          <>
-            {currentPage === 'home'     && <AppHome onNavigate={(p) => setCurrentPage(p)} setIsLoggedIn={setIsLoggedIn} />}
-            {currentPage === 'partial2' && <DocumentacionParcial2 onBackToHome={() => setCurrentPage('home')} />}
-            {currentPage === 'partial3' && <DocumentacionParcial3 onBackToHome={() => setCurrentPage('home')} />}
-          </>
-        )}
+        {currentPage === 'home'     && <AppHome onNavigate={(p) => setCurrentPage(p)} />}
+        {currentPage === 'partial2' && <DocumentacionParcial2 onBackToHome={() => setCurrentPage('home')} />}
+        {currentPage === 'partial3' && <DocumentacionParcial3 onBackToHome={() => setCurrentPage('home')} />}
       </div>
     </GoogleOAuthProvider>
   );
