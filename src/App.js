@@ -7,7 +7,28 @@ import DocumentacionParcial3 from './DocumentacionParcial3';
 
 const CLIENT_ID = "147107726030-6ss1s5ub8355k24b35nnk9dt2s0ivsug.apps.googleusercontent.com";
 
-function AppHome({ onNavigate }) {
+function LoginScreen({ onLogin }) {
+  return (
+    <div className="App">
+      <div className="container">
+        <img src={profile} alt="Mi Foto" className="profile" />
+        <h1 style={{ color: '#61dafb', marginBottom: '20px' }}>Acceso al Portafolio</h1>
+        <p style={{ marginBottom: '30px' }}>Por favor, inicia sesión para continuar</p>
+        <GoogleLogin
+          onSuccess={(response) => {
+            console.log("Login exitoso:", response);
+            onLogin();
+          }}
+          onError={() => console.log("Error en login")}
+          useOneTap
+        />
+        <p style={{ marginTop: '20px' }}>Estoy programando con el login con google</p>
+      </div>
+    </div>
+  );
+}
+
+function AppHome({ onNavigate, onLogout }) {
   const [showDocs, setShowDocs] = useState(false);
 
   const handleDownload = (filePath, fileName) => {
@@ -37,16 +58,7 @@ function AppHome({ onNavigate }) {
         <button className="main-btn" onClick={() => setShowDocs(!showDocs)}>DOCUMENTACIÓN PARCIAL 1</button>
         <button className="main-btn" onClick={() => onNavigate('partial2')} style={{ marginTop:'15px', backgroundColor:'#ff6b6b' }}>DOCUMENTACIÓN PARCIAL 2</button>
         <button className="main-btn" onClick={() => onNavigate('partial3')} style={{ marginTop:'15px', backgroundColor:'#4ecdc4' }}>DOCUMENTACIÓN PARCIAL 3 — ERS</button>
-
-        {/* GOOGLE LOGIN COMPONENT */}
-        <div style={{ marginTop: '30px', textAlign: 'center' }}>
-          <h3 style={{ color: '#61dafb', marginBottom: '15px' }}>Acceso con Google</h3>
-          <GoogleLogin
-            onSuccess={(response) => console.log("Login exitoso:", response)}
-            onError={() => console.log("Error en login")}
-            useOneTap
-          />
-        </div>
+        <button className="main-btn" onClick={onLogout} style={{ marginTop:'15px', backgroundColor:'#e74c3c' }}>CERRAR SESIÓN</button>
 
         {showDocs && (
           <div className="pdf-overlay">
@@ -68,12 +80,21 @@ function AppHome({ onNavigate }) {
 }
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
+
+  if (!isLoggedIn) {
+    return (
+      <GoogleOAuthProvider clientId={CLIENT_ID}>
+        <LoginScreen onLogin={() => setIsLoggedIn(true)} />
+      </GoogleOAuthProvider>
+    );
+  }
 
   return (
     <GoogleOAuthProvider clientId={CLIENT_ID}>
       <div>
-        {currentPage === 'home'     && <AppHome onNavigate={(p) => setCurrentPage(p)} />}
+        {currentPage === 'home'     && <AppHome onNavigate={(p) => setCurrentPage(p)} onLogout={() => setIsLoggedIn(false)} />}
         {currentPage === 'partial2' && <DocumentacionParcial2 onBackToHome={() => setCurrentPage('home')} />}
         {currentPage === 'partial3' && <DocumentacionParcial3 onBackToHome={() => setCurrentPage('home')} />}
       </div>
